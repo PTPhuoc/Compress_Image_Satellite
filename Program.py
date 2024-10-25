@@ -107,7 +107,6 @@ def CompressJPEG2000(directory, filename, id):
             driver='JP2OpenJPEG',  # Định dạng JPEG 2000
             compress='jpeg2000',  # Phương pháp nén
             quality=25,  # Mức chất lượng nén
-            tile_size=(512, 512)
         )
         data = src.read()
         with io.BytesIO() as MemoryFile:
@@ -152,7 +151,8 @@ def DecompressJPEG2000(output_folder, name_folder_compress):
                             width=files_compress[3],
                             count=files_compress[4],
                             dtype=files_compress[5],
-                            transform=transform
+                            transform=transform,
+                            compress='deflate'
                         )
                         data = src.read()
                         new_name_file = os.path.splitext(files_compress[0])[0] + ".tif"
@@ -206,7 +206,7 @@ def Decompress_LZW(output_folder, name_folder_compress):
                 with rasterio.open(os.path.join(new_path, new_name_file), "w", driver='GTiff',
                                    height=files_compress[2],
                                    width=files_compress[3], count=files_compress[4], dtype=files_compress[5],
-                                   transform=transform) as File_decompress:
+                                   transform=transform, compress='lzw') as File_decompress:
                     File_decompress.write(data)
                 print("Giải nén thành công file: {:s}, Trong vòng: {:.2f}s".format(new_name_file,
                                                                                    time.time() - start_time))

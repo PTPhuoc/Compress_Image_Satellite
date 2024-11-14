@@ -68,6 +68,7 @@ def check_same_filename(original_file_path, file_to_check_path):
         return False
 
 
+
 def print_image_info():
     for filename in os.listdir(folder_origin):
         if filename.lower().endswith('.tif'):

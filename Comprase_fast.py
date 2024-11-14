@@ -97,6 +97,7 @@ def print_image_info():
                     print()
 
 
+
 # Chạy hàm kiểm tra ảnh trong thư mục
 if folder_origin is not None and folder_check is not None:
     print('------------------------------------------ Bắt đầu kiểm tra ------------------------------------------')

@@ -152,7 +152,7 @@ def DecompressJPEG2000(output_folder, name_folder_compress):
                             count=files_compress[4],
                             dtype=files_compress[5],
                             transform=transform,
-                            compress='deflate'
+                            compress='lzw'
                         )
                         data = src.read()
                         new_name_file = os.path.splitext(files_compress[0])[0] + ".tif"
